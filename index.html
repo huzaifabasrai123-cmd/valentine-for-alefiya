@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Alefiya ❤️ Huzaifa</title>
 
   <style>
@@ -15,91 +15,82 @@
       align-items: center;
       min-height: 100vh;
       text-align: center;
-      overflow-x: hidden;
     }
 
     .container {
       background: white;
-      padding: 35px 25px;
+      padding: 35px;
       border-radius: 25px;
-      box-shadow: 0 0 25px rgba(0,0,0,0.20);
+      box-shadow: 0 0 25px rgba(0,0,0,0.2);
       max-width: 520px;
       width: 90%;
-      z-index: 2;
     }
 
     h1 {
       color: #e60050;
-      font-size: 2.6rem;
+      font-size: 2.8rem;
       margin-bottom: 10px;
     }
 
+    .photo {
+      width: 100%;
+      max-width: 380px;
+      border-radius: 20px;
+      margin: 20px auto;
+      display: block;
+      box-shadow: 0 0 15px rgba(0,0,0,0.25);
+    }
+
     p {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       color: #444;
       margin: 12px 0;
     }
 
-    .photo {
-      width: 90%;
-      max-width: 380px;
-      border-radius: 20px;
-      margin: 18px auto;
-      display: block;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    .buttons {
+      margin-top: 20px;
     }
 
     button {
-      margin: 18px 10px;
-      padding: 12px 28px;
-      font-size: 1rem;
+      font-size: 1.1rem;
+      padding: 12px 30px;
+      margin: 10px;
       border: none;
-      border-radius: 14px;
+      border-radius: 30px;
       cursor: pointer;
       transition: 0.3s;
     }
 
+    /* ✅ YES BUTTON GROWS BIGGER */
     .yes {
-      background: #e60050;
+      background: #ff2e75;
       color: white;
       font-weight: bold;
+
+      animation: growYes 1.5s infinite ease-in-out;
     }
 
-    .yes:hover {
-      background: #b30040;
-      transform: scale(1.06);
+    /* Growing animation */
+    @keyframes growYes {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.3);
+      }
+      100% {
+        transform: scale(1);
+      }
     }
 
     .no {
-      background: #eee;
-      color: #333;
-      position: absolute;
+      background: #ddd;
+      color: black;
       font-weight: bold;
-    }
-
-    #message {
-      margin-top: 18px;
-      font-size: 1.3rem;
-      color: #e60050;
-      font-weight: bold;
-    }
-
-    /* Floating Hearts */
-    .heart {
-      position: absolute;
-      font-size: 24px;
-      animation: floatUp 5s linear infinite;
-      opacity: 0.85;
-      z-index: 1;
-    }
-
-    @keyframes floatUp {
-      from { transform: translateY(100vh); }
-      to { transform: translateY(-10vh); }
     }
 
     iframe {
-      margin-top: 15px;
+      margin-top: 20px;
       border-radius: 15px;
     }
   </style>
@@ -108,12 +99,15 @@
 <body>
 
   <div class="container">
+
     <h1>Alefiya ❤️</h1>
 
-    <!-- ✅ PHOTO -->
-    <img src="https://raw.githubusercontent.com/huzaifabasrai123-cmd/valentine-for-alefiya/main/photo.jpg"
-     alt="Our Photo"
-     class="photo">
+    <!-- ✅ PHOTO ALWAYS WORKS -->
+    <img
+      src="https://raw.githubusercontent.com/huzaifabasrai123-cmd/valentine-for-alefiya/main/photo.jpg"
+      alt="Our Photo"
+      class="photo"
+    >
 
     <p><b>From Huzaifa 💌</b></p>
 
@@ -122,63 +116,32 @@
       Every moment with you feels like love.
     </p>
 
-    <p style="font-size: 1.3rem;">
+    <p style="font-size:1.4rem;">
       Will you be my Valentine? 💘
     </p>
 
     <!-- Buttons -->
-    <button class="yes" onclick="sayYes()">Yes 💞</button>
-    <button class="no" id="noBtn">No 🙈</button>
+    <div class="buttons">
+      <button class="yes" onclick="alert('YAYYY 😍❤️ Alefiya, I love you forever! Happy Valentine’s Day 💖')">
+        Yes 💞
+      </button>
 
-    <div id="message"></div>
+      <button class="no" onclick="alert('No option not allowed 🙈😂')">
+        No 🙈
+      </button>
+    </div>
 
-    <!-- ✅ MUSIC PLAYER -->
-    <p style="margin-top:20px;">
-      🎶 Tap Play for our song: <b>Tere Hawaale</b>
-    </p>
+    <p>🎶 Tap Play for our song: <b>Tere Hawaale</b></p>
 
-    <iframe width="320" height="180"
+    <!-- ✅ SONG EMBED -->
+    <iframe width="100%" height="220"
       src="https://www.youtube.com/embed/Z0VbANbyH2o"
       frameborder="0"
       allow="autoplay; encrypted-media"
       allowfullscreen>
     </iframe>
+
   </div>
-
-  <script>
-    /* Floating Hearts */
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.classList.add("heart");
-      heart.innerHTML = "💗";
-
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = Math.random() * 3 + 3 + "s";
-
-      document.body.appendChild(heart);
-
-      setTimeout(() => heart.remove(), 4500);
-    }
-
-    setInterval(createHeart, 300);
-
-    /* YES Button Message */
-    function sayYes() {
-      document.getElementById("message").innerHTML =
-        "YAYYY 😍💖 Alefiya, I love you forever! Happy Valentine’s Day ❤️";
-    }
-
-    /* NO Button Runs Away */
-    const noBtn = document.getElementById("noBtn");
-
-    noBtn.addEventListener("mouseover", () => {
-      const x = Math.random() * (window.innerWidth - 140);
-      const y = Math.random() * (window.innerHeight - 80);
-
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
-    });
-  </script>
 
 </body>
 </html>
